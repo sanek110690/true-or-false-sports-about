@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EC">
+    <title>About — True or False: Sports</title>
+    <style>
+        :root {
+            --background: #F7F4EC;
+            --surface: #FFFFFF;
+            --surface-secondary: #ECE7DC;
+            --primary: #D6452E;
+            --primary-dark: #8E2A1E;
+            --primary-light: #E4572E;
+            --text-primary: #17212B;
+            --text-secondary: #4A5866;
+            --text-hint: #6B7785;
+            --gold: #C58B12;
+            --border: #D8DEE4;
+            --green: #1F7A4D;
+            --red: #C0392B;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 32px 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 10% 0%, #EEF3F2 0%, transparent 38%),
+                radial-gradient(circle at 90% 100%, #EEF3F2 0%, transparent 38%),
+                var(--background);
+            color: var(--text-primary);
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .language-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .language-switch button {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .language-switch button.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #FFFFFF;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(23, 33, 43, 0.06);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 0 12px 36px rgba(23, 33, 43, 0.07);
+        }
+
+        .hero {
+            text-align: center;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        .app-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #E4572E, #8E2A1E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 38px;
+            box-shadow: 0 8px 20px rgba(214, 69, 46, 0.24);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 29px;
+            line-height: 1.25;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+        .subtitle {
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .edition {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: #FCE8E2;
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        h2 {
+            margin: 30px 0 10px;
+            font-size: 19px;
+            line-height: 1.4;
+            font-weight: 750;
+            color: var(--text-primary);
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin: 0 0 14px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 15px;
+            background: #F8F5EE;
+            border: 1px solid rgba(23, 33, 43, 0.05);
+            border-radius: 16px;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #FCE8E2;
+            font-size: 21px;
+        }
+
+        .feature strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .feature span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .mode {
+            padding: 14px;
+            border-radius: 14px;
+            background: #F8F5EE;
+            border: 1px solid rgba(23, 33, 43, 0.05);
+        }
+
+        .mode strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .mode span {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .highlight {
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: #FCE8E2;
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight p {
+            margin: 0;
+            color: var(--primary-dark);
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 26px;
+            margin-top: 28px;
+            border-top: 1px solid var(--border);
+            color: var(--text-hint);
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].visible {
+            display: block;
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            .card {
+                padding: 24px 18px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .modes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="language-switch">
+        <button id="enBtn" class="active" onclick="setLanguage('en')">English</button>
+        <button id="ruBtn" onclick="setLanguage('ru')">Русский</button>
+    </div>
+
+    <main class="card">
+
+        <!-- ENGLISH -->
+        <div data-lang="en" class="visible">
+            <header class="hero">
+                <div class="app-icon">⚽</div>
+                <h1>True or False</h1>
+                <p class="subtitle">Challenge your sports knowledge!</p>
+                <span class="edition">SPORTS EDITION</span>
+            </header>
+
+            <h2>About the Game</h2>
+            <p>
+                Welcome to <strong>True or False: Sports</strong> — a quiz
+                where you can test your knowledge of the world of sports!
+            </p>
+            <p>
+                From legendary athletes and historic achievements to
+                surprising records and fascinating facts, discover how much
+                you really know about your favorite sports.
+            </p>
+
+            <h2>Explore the World of Sports</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <div class="feature-icon">⚽</div>
+                    <div>
+                        <strong>Popular Sports</strong>
+                        <span>Football, basketball, tennis, hockey, athletics,
+                        swimming, and many more.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div>
+                        <strong>Tournaments & Championships</strong>
+                        <span>Discover facts about the Olympic Games,
+                        World Cups, major leagues, and famous competitions.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🥇</div>
+                    <div>
+                        <strong>Athletes & Records</strong>
+                        <span>Test yourself on legendary athletes,
+                        remarkable achievements, and incredible records.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>Learn Something New</strong>
+                        <span>Every answer comes with a short explanation
+                        to help you discover interesting sports facts.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Choose Your Game Mode</h2>
+            <p>
+                Play your way! Choose a mode that matches your mood
+                and challenge yourself.
+            </p>
+
+            <div class="modes">
+                <div class="mode">
+                    <strong>Classic</strong>
+                    <span>Answer a series of questions and see how many
+                    you can get right.</span>
+                </div>
+                <div class="mode">
+                    <strong>Time Challenge</strong>
+                    <span>Make quick decisions before the clock runs out.</span>
+                </div>
+                <div class="mode">
+                    <strong>Journey</strong>
+                    <span>Progress through questions and discover
+                    new challenges along the way.</span>
+                </div>
+                <div class="mode">
+                    <strong>Perfect</strong>
+                    <span>One mistake ends the game. Can you get
+                    every answer right?</span>
+                </div>
+                <div class="mode">
+                    <strong>Survival</strong>
+                    <span>You have limited lives. How long can you
+                    keep your winning streak alive?</span>
+                </div>
+            </div>
+
+            <h2>Play Anytime, Anywhere</h2>
+            <p>
+                The game is designed for quick sessions whenever you have
+                a free moment. Test yourself, improve your knowledge,
+                and enjoy discovering new sports facts.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    <strong>True or False?</strong> Think you know sports?
+                    Put your knowledge to the test and find out!
+                </p>
+            </div>
+        </div>
+
+        <!-- RUSSIAN -->
+        <div data-lang="ru">
+            <header class="hero">
+                <div class="app-icon">⚽</div>
+                <h1>Правда или Ложь</h1>
+                <p class="subtitle">Проверь свои знания о спорте!</p>
+                <span class="edition">СПОРТИВНАЯ ВИКТОРИНА</span>
+            </header>
+
+            <h2>Об игре</h2>
+            <p>
+                Добро пожаловать в <strong>«Правда или ложь: Спорт»</strong> —
+                викторину, в которой ты можешь проверить свои знания
+                о мире спорта!
+            </p>
+            <p>
+                Легендарные спортсмены, исторические достижения,
+                невероятные рекорды и удивительные факты —
+                узнай, насколько хорошо ты разбираешься в любимых видах спорта.
+            </p>
+
+            <h2>Открой для себя мир спорта</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <div class="feature-icon">⚽</div>
+                    <div>
+                        <strong>Популярные виды спорта</strong>
+                        <span>Футбол, баскетбол, теннис, хоккей, лёгкая атлетика,
+                        плавание и многое другое.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div>
+                        <strong>Турниры и чемпионаты</strong>
+                        <span>Интересные факты об Олимпийских играх,
+                        чемпионатах мира, крупных лигах и известных соревнованиях.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🥇</div>
+                    <div>
+                        <strong>Спортсмены и рекорды</strong>
+                        <span>Проверь себя на знание легендарных спортсменов,
+                        выдающихся достижений и невероятных рекордов.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>Узнавай новое</strong>
+                        <span>Каждый ответ сопровождается коротким объяснением,
+                        которое поможет узнать больше об интересных спортивных фактах.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Выбирай игровой режим</h2>
+            <p>
+                Играй так, как тебе нравится! Выбирай подходящий режим
+                и проверяй свои знания.
+            </p>
+
+            <div class="modes">
+                <div class="mode">
+                    <strong>Классика</strong>
+                    <span>Ответь на серию вопросов и узнай,
+                    сколько правильных ответов сможешь дать.</span>
+                </div>
+                <div class="mode">
+                    <strong>На время</strong>
+                    <span>Принимай решения быстро, пока не закончилось время.</span>
+                </div>
+                <div class="mode">
+                    <strong>Путешествие</strong>
+                    <span>Продвигайся по вопросам и открывай
+                    для себя новые испытания.</span>
+                </div>
+                <div class="mode">
+                    <strong>Идеал</strong>
+                    <span>Одна ошибка — и игра окончена.
+                    Сможешь ответить правильно на всё?</span>
+                </div>
+                <div class="mode">
+                    <strong>Выживание</strong>
+                    <span>У тебя ограниченное количество жизней.
+                    Как долго продержится твоя серия правильных ответов?</span>
+                </div>
+            </div>
+
+            <h2>Играй в любое время и в любом месте</h2>
+            <p>
+                Игра отлично подходит для коротких игровых сессий
+                в свободное время. Проверяй себя, расширяй кругозор
+                и открывай новые интересные факты о спорте.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    <strong>Правда или ложь?</strong> Думаешь, что хорошо
+                    разбираешься в спорте? Проверь свои знания и узнай ответ!
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div data-lang="en" class="visible">
+                <p>Made with ❤️ by ABVSoft</p>
+                <p>
+                    Questions or feedback?
+                    <a href="mailto:abvsoft.apps@gmail.com">Contact us</a>
+                </p>
+                <p>© 2026 ABVSoft. All rights reserved.</p>
+            </div>
+
+            <div data-lang="ru">
+                <p>Сделано с ❤️ командой ABVSoft</p>
+                <p>
+                    Есть вопросы или предложения?
+                    <a href="mailto:abvsoft.apps@gmail.com">Свяжитесь с нами</a>
+                </p>
+                <p>© 2026 ABVSoft. Все права защищены.</p>
+            </div>
+        </footer>
+
+    </main>
+</div>
+
+<script>
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            element.classList.toggle('visible', element.dataset.lang === lang);
+        });
+
+        document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+        document.getElementById('ruBtn').classList.toggle('active', lang === 'ru');
+
+        try {
+            localStorage.setItem('sportsAboutLanguage', lang);
+        } catch (e) {
+            // Language switching still works if local storage is unavailable.
+        }
+    }
+
+    (function () {
+        let lang = 'en';
+
+        try {
+            const saved = localStorage.getItem('sportsAboutLanguage');
+            if (saved === 'en' || saved === 'ru') {
+                lang = saved;
+            } else if (navigator.language.toLowerCase().startsWith('ru')) {
+                lang = 'ru';
+            }
+        } catch (e) {
+            if (navigator.language.toLowerCase().startsWith('ru')) {
+                lang = 'ru';
+            }
+        }
+
+        setLanguage(lang);
+    })();
+</script>
+</body>
+</html>
